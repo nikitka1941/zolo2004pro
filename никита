@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QHBoxLayout, QVB
 app = QApplication([])
 main_win = QWidget()
 main_win.setWindowTitle('конкурс від Crazy people')
-question = QLabel(' В якому році канал отримав "золоту кнопку" від YouTube?')
+question = QLabel(' В якому році нікіта сосну   в"')
 btn_answer1 = QRadioButton('2005')
 btn_answer2 = QRadioButton('2010')
 btn_answer3 = QRadioButton('2015')
