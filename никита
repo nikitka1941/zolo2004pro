@@ -1,22 +1,38 @@
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication , QWidget , QPushButton , QHBoxLayout , QVBoxLayout , QLabel , QMessageBox ,QRadioButton
+from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel, QPushButton
 
-app = QApplication([])
-main_win = QWidget()
-main_win.setWindowTitle('Конкурс від Crazy People')
-question = QLabel('когда родился димаґ?')
-btn_answer1 = QRadioButton('2005')
-btn_answer2 = QRadioButton('2009')
-btn_answer3 = QRadioButton('2015')
-btn_answer4 = QRadioButton('2020')
-Layout_main = QVBoxLayout()
-Layout_main.addWidget(question, alignment = Qt.AlignCenter)
-Layout_main.addWidget(btn_answer3, alignment = Qt.AlignCenter)
-Layout_main.addWidget(btn_answer1, alignment = Qt.AlignCenter)
-Layout_main.addWidget(btn_answer2 ,alignment = Qt.AlignCenter)
-Layout_main.addWidget(btn_answer4, alignment = Qt.AlignCenter)
+class QuizWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Quiz")
+        self.layout = QVBoxLayout()
+        self.widget = QWidget()
+        self.widget.setLayout(self.layout)
+        self.setCentralWidget(self.widget)
+        self.questions = [
+            {
+                "question": "What is the capital of France?",
+                "options": ["Paris", "London", "Berlin", "Rome"],
+                "answer": "Paris"
+            },
+            {
+                "question": "What is the largest planet in our solar system?",
+                "options": ["Jupiter", "Saturn", "Neptune", "Mars"],
+                "answer": "Jupiter"
+            },
+            {
+                "question": "What is the chemical symbol for gold?",
+                "options": ["Au", "Ag", "Fe", "Cu"],
+                "answer": "Au"
+            }
+        ]
+        self.current_question = 0
+        self.score = 0
+        self.create_question()
 
-main_win.setLayout(Layout_main)
-main_win.show()
-app.exec_()
+    def create_question(self):
+        self.layout.addWidget(QLabel(self.questions[self.current_question]["question"]))
+        for option in self.questions[self.current_question]["options"]:
+            button = QPushButton(option)
+            button
+
 
