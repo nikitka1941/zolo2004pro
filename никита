@@ -1,38 +1,47 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel, QPushButton
-
-class QuizWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("Quiz")
-        self.layout = QVBoxLayout()
-        self.widget = QWidget()
-        self.widget.setLayout(self.layout)
-        self.setCentralWidget(self.widget)
-        self.questions = [
-            {
-                "question": "What is the capital of France?",
-                "options": ["Paris", "London", "Berlin", "Rome"],
-                "answer": "Paris"
-            },
-            {
-                "question": "What is the largest planet in our solar system?",
-                "options": ["Jupiter", "Saturn", "Neptune", "Mars"],
-                "answer": "Jupiter"
-            },
-            {
-                "question": "What is the chemical symbol for gold?",
-                "options": ["Au", "Ag", "Fe", "Cu"],
-                "answer": "Au"
-            }
-        ]
-        self.current_question = 0
-        self.score = 0
-        self.create_question()
-
-    def create_question(self):
-        self.layout.addWidget(QLabel(self.questions[self.current_question]["question"]))
-        for option in self.questions[self.current_question]["options"]:
-            button = QPushButton(option)
-            button
-
-
+from PyQt5.QtCore import Qt 
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QRadioButton, QGridLayout, QMainWindow, QDoubleSpinBox 
+import sys 
+ 
+class mw(QMainWindow): 
+    def init(self): 
+        super().init() 
+        self.resize(600, 550) 
+        self.setWindowTitle('Memory Card') 
+        central_widget = QWidget(self) 
+        self.setCentralWidget(central_widget) 
+        self.question = QLabel('Варіанти відповідей', central_widget) 
+        self.text = QLabel('хвилин', central_widget) 
+        self.butt1 = QRadioButton('ээ', central_widget) 
+        self.butt2 = QRadioButton('эээ', central_widget) 
+        self.butt3 = QRadioButton('ээээ', central_widget) 
+        self.butt4 = QRadioButton('эээээ', central_widget) 
+        self.menu = QPushButton('Меню', central_widget) 
+        self.otvet = QPushButton('Відповісти', central_widget) 
+        self.rel = QPushButton('Відпочити', central_widget) 
+        self.layout_butt = QGridLayout(central_widget) 
+        self.layout_butt.addWidget(self.butt1, 2, 0) 
+        self.layout_butt.addWidget(self.butt2, 2, 2) 
+        self.layout_butt.addWidget(self.butt3, 3, 0) 
+        self.layout_butt.addWidget(self.butt4, 3, 2) 
+        self.layout_butt.setRowMinimumHeight(0, 25) 
+        self.layout_butt.setRowMinimumHeight(1, 25) 
+        self.layout_butt.setRowMinimumHeight(2, 25) 
+        self.layout_butt.setRowMinimumHeight(3, 25) 
+        self.double_spinbox = QDoubleSpinBox(central_widget) 
+        self.double_spinbox.setRange(1, 59) 
+        self.double_spinbox.setSingleStep(1) 
+        self.double_spinbox.move(505, 22) 
+        self.double_spinbox.resize(50,27) 
+        self.question.move(20, 150) 
+        self.rel.move(400, 20) 
+        self.otvet.resize(180,25) 
+        self.otvet.move(210, 500) 
+        self.menu.move(20, 20) 
+        self.text.move(560, 20) 
+ 
+ 
+if name == "main": 
+    app = QApplication(sys.argv) 
+    window = mw() 
+    window.show() 
+    sys.exit(app.exec_())
